@@ -30,6 +30,7 @@ const server = http.createServer((req, res) => {
 
     if (req.url === "/") {
         status = 200;
+        //res.status(200).json({success: true, message: "Successfully uploaded !"});
         fs.createReadStream(path.resolve(__dirname, 'index.html')).pipe(res)
     } else if(req.url === "/comments"){
         if (req.method === "POST") {
@@ -46,7 +47,7 @@ const server = http.createServer((req, res) => {
             res.end(responseContent);
         } 
     } else{
-        status = 400;
+        res.statusCode = 400;
         res.writeHead(status, headers);
         res.end();
     }
