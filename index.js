@@ -32,7 +32,7 @@ const server = http.createServer((req, res) => {
         status = 200;
         fs.createReadStream(path.resolve(__dirname, 'index.html')).pipe(res)
     } else if(req.url === "/comments"){
-        if (req.method === "GET") {
+        if (req.method === "POST") {
             status = 200;
             responseContent = "<h1>Comments page</h1> <a href='/'>Home page</a>";
             res.writeHead(status, headers);
